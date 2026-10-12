@@ -1,0 +1,8 @@
+# Never commit the Chrome extension signing key
+*.pem
+key.pem
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/

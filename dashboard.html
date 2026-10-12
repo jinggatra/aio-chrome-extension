@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My App Launcher</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="dashboard.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="My App Launcher">
+      <span class="brand-mark" aria-hidden="true">✦</span>
+      <span>My App <strong>Launcher</strong></span>
+    </a>
+    <div class="top-actions">
+      <span class="privacy-note"><span class="privacy-dot"></span> Tersimpan di browser ini</span>
+      <button id="themeToggle" class="icon-button" type="button" aria-label="Ganti tema" title="Ganti tema">☾</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <p class="eyebrow">RUANG KERJA PRIBADI</p>
+      <h1>Semua aplikasi,<br><span>dalam satu tempat.</span></h1>
+      <p class="hero-copy">Buka situs favoritmu tanpa harus mencari-cari tab atau bookmark.</p>
+      <label class="search-box" for="searchInput">
+        <span aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" placeholder="Cari aplikasi..." autocomplete="off">
+        <kbd>Ctrl K</kbd>
+      </label>
+    </section>
+
+    <section class="toolbar" aria-label="Filter aplikasi">
+      <div id="categoryFilters" class="category-filters" aria-label="Kategori"></div>
+      <button id="addAppButton" class="primary-button" type="button"><span aria-hidden="true">＋</span> Tambah aplikasi</button>
+    </section>
+
+    <section class="apps-section">
+      <div class="section-heading">
+        <div>
+          <h2 id="sectionTitle">Aplikasi favorit</h2>
+          <p id="appCount" class="muted">Memuat aplikasi...</p>
+        </div>
+        <span class="section-decoration" aria-hidden="true">✳</span>
+      </div>
+      <div id="appsGrid" class="apps-grid"></div>
+      <div id="emptyState" class="empty-state" hidden>
+        <div class="empty-icon">⌕</div>
+        <h3>Tidak ada aplikasi ditemukan</h3>
+        <p>Coba kata kunci atau kategori lain.</p>
+        <button id="clearFiltersButton" class="secondary-button" type="button">Hapus filter</button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>My App Launcher <span class="footer-separator">•</span> Versi 1.0</span>
+      <span>Dashboard lokal, data tidak dikirim ke server</span>
+    </footer>
+  </main>
+
+  <dialog id="appDialog" class="app-dialog">
+    <form id="appForm" method="dialog">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">PERSONALISASI</p>
+          <h2 id="dialogTitle">Tambah aplikasi</h2>
+        </div>
+        <button id="closeDialogButton" class="icon-button close-button" type="button" aria-label="Tutup">×</button>
+      </div>
+      <input id="editingId" type="hidden">
+      <label class="field-label" for="nameInput">Nama aplikasi</label>
+      <input id="nameInput" class="text-input" required maxlength="60" placeholder="Contoh: Notion">
+      <label class="field-label" for="urlInput">Alamat website</label>
+      <input id="urlInput" class="text-input" type="url" required placeholder="https://example.com">
+      <p class="field-help">Gunakan alamat lengkap yang diawali https:// atau http://.</p>
+      <label class="field-label" for="categoryInput">Kategori</label>
+      <select id="categoryInput" class="text-input" required>
+        <option value="Produktivitas">Produktivitas</option>
+        <option value="Kreatif">Kreatif</option>
+        <option value="Sosial">Sosial</option>
+        <option value="Video">Video</option>
+        <option value="Penyimpanan">Penyimpanan</option>
+        <option value="Lainnya">Lainnya</option>
+      </select>
+      <label class="field-label" for="symbolInput">Simbol ikon</label>
+      <div class="symbol-row">
+        <input id="symbolInput" class="text-input symbol-input" maxlength="3" value="✦" aria-label="Simbol ikon">
+        <div id="colorChoices" class="color-choices" aria-label="Warna ikon"></div>
+      </div>
+      <input id="colorInput" type="hidden" value="#6C63FF">
+      <div class="dialog-actions">
+        <button id="cancelButton" class="secondary-button" type="button">Batal</button>
+        <button class="primary-button" type="submit">Simpan aplikasi</button>
+      </div>
+      <p id="formError" class="form-error" role="alert"></p>
+    </form>
+  </dialog>
+
+  <template id="appCardTemplate">
+    <article class="app-card">
+      <button class="card-main" type="button">
+        <span class="app-icon"></span>
+        <span class="app-info">
+          <span class="app-name"></span>
+          <span class="app-category"></span>
+        </span>
+        <span class="launch-arrow" aria-hidden="true">↗</span>
+      </button>
+      <div class="card-actions">
+        <span class="site-host"></span>
+        <div class="card-action-buttons">
+          <button class="small-action edit-action" type="button" title="Edit aplikasi" aria-label="Edit aplikasi">✎</button>
+          <button class="small-action delete-action" type="button" title="Hapus aplikasi" aria-label="Hapus aplikasi">×</button>
+        </div>
+      </div>
+    </article>
+  </template>
+</body>
+</html>
