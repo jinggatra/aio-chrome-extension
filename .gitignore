@@ -7,5 +7,5 @@ key.pem
 Thumbs.db
 .vscode/
 
-
+.gitignore
 RELEASE_GUIDE.md
